@@ -40,20 +40,6 @@ func threeSum(nums []int) [][]int {
 	return ans
 }
 
-func compare2Dslices(a, b [][]int) bool {
-	n, m := len(a), len(a[0])
-
-	for i := range n {
-		for j := range m {
-			if a[i][j] != b[i][j] {
-				return false
-			}
-		}
-	}
-
-	return true
-}
-
 func TestThreeSum(t *testing.T) {
 	if ans := threeSum([]int{-1, 0, 1, 2, -1, -4}); !compare2Dslices(ans, [][]int{[]int{-1, -1, 2}, []int{-1, 0, 1}}) {
 		t.Errorf("test1 failed")

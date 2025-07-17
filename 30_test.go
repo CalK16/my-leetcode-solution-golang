@@ -4,39 +4,33 @@ import (
 	"testing"
 )
 
-func all(s []bool) bool {
-	for _, b := range s {
-		if !b {
-			return false
-		}
-	}
-	return true
-}
-
-func permutation(words []string, selected []bool, prev string, res map[string]int) {
-	if all(selected) {
-		res[prev] = 1
-		return
-	}
-
-	for i := range len(words) {
-		if !selected[i] {
-			selected[i] = true
-			permutation(words, selected, prev+words[i], res)
-			selected[i] = false
-		}
-	}
-}
-
 func findSubstring(s string, words []string) []int {
-	n := len(words[0]) * len(words)
-	m := make(map[string]int)
-	permutation(words, make([]bool, len(words)), "", m)
-
 	ans := make([]int, 0)
-	for i := 0; i <= len(s)-n; i++ {
-		_, ok := m[s[i:i+n]]
-		if ok {
+	n, m := len(words), len(words[0])
+	wc := make(map[string]int)
+
+	for _, word := range words {
+		wc[word]++
+	}
+
+	for i := range len(s) - n*m + 1 {
+		w := s[i : i+(n*m)]
+
+		curr := make(map[string]int)
+		for j := 0; j < len(w); j += m {
+			curr[w[j:j+m]]++
+		}
+
+		same := true
+		for word := range curr {
+			val, ok := wc[word]
+			if !ok || curr[word] != val {
+				same = false
+				break
+			}
+		}
+
+		if same {
 			ans = append(ans, i)
 		}
 	}
