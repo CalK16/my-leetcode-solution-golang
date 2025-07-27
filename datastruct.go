@@ -5,6 +5,16 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func (listNode *ListNode) Compare(other *ListNode) bool {
+	if listNode == nil && other == nil {
+		return true
+	} else if listNode == nil || other == nil {
+		return false
+	}
+
+	return listNode.Val == other.Val && listNode.Next.Compare(other.Next)
+}
+
 type LinkedListBuilder struct {
 	dummy *ListNode
 	tail  *ListNode

@@ -1,5 +1,10 @@
 package main
 
+import (
+	"strconv"
+	"strings"
+)
+
 func compareSlices[T comparable](a, b []T) bool {
 	if len(a) != len(b) {
 		return false
@@ -26,4 +31,23 @@ func compare2Dslices[T comparable](a, b [][]T) bool {
 	}
 
 	return true
+}
+
+func ToLinkedList(num ...int) *ListNode {
+	builder := NewLinkedListBuilder()
+	return builder.Extend(num...).Build()
+}
+
+func (l *ListNode) String() string {
+	var b strings.Builder
+	b.WriteByte('[')
+	for l != nil {
+		b.WriteString(strconv.Itoa(l.Val))
+		if l.Next != nil {
+			b.WriteByte(',')
+		}
+		l = l.Next
+	}
+	b.WriteByte(']')
+	return b.String()
 }
