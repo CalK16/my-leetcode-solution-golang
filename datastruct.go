@@ -57,3 +57,9 @@ func (l *LinkedListBuilder) Extend(num ...int) *LinkedListBuilder {
 func (l *LinkedListBuilder) Build() *ListNode {
 	return l.dummy.Next
 }
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
