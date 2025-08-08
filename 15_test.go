@@ -41,7 +41,7 @@ func threeSum(nums []int) [][]int {
 }
 
 func TestThreeSum(t *testing.T) {
-	if ans := threeSum([]int{-1, 0, 1, 2, -1, -4}); !compare2Dslices(ans, [][]int{[]int{-1, -1, 2}, []int{-1, 0, 1}}) {
+	if ans := threeSum([]int{-1, 0, 1, 2, -1, -4}); !isSame2DSlice(ans, [][]int{[]int{-1, -1, 2}, []int{-1, 0, 1}}) {
 		t.Errorf("test1 failed")
 	}
 }

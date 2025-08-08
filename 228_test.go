@@ -28,13 +28,13 @@ func summaryRanges(nums []int) []string {
 func TestSummaryRanges(t *testing.T) {
 	ans := summaryRanges([]int{0, 1, 2, 4, 5, 7})
 	exp := []string{"0->2", "4->5", "7"}
-	if !compareSlices(ans, exp) {
+	if !isSameSlices(ans, exp) {
 		t.Errorf("TEST 1 FAILED: %s != %s", ans, exp)
 	}
 
 	ans = summaryRanges([]int{0, 2, 3, 4, 6, 8, 9})
 	exp = []string{"0", "2->4", "6", "8->9"}
-	if !compareSlices(ans, exp) {
+	if !isSameSlices(ans, exp) {
 		t.Errorf("TEST 1 FAILED: %s != %s", ans, exp)
 	}
 }

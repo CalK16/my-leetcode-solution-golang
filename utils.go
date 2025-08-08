@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func compareSlices[T comparable](a, b []T) bool {
+func isSameSlices[T comparable](a, b []T) bool {
 	if len(a) != len(b) {
 		return false
 	}
@@ -19,11 +19,30 @@ func compareSlices[T comparable](a, b []T) bool {
 	return true
 }
 
-func compare2Dslices[T comparable](a, b [][]T) bool {
-	n, m := len(a), len(a[0])
+func isSameShape[T comparable](a, b [][]T) bool {
+	ra, rb := len(a), len(b)
+	if ra != rb {
+		return false
+	}
+
+	for i := range ra {
+		if len(a[i]) != len(b[i]) {
+			return false
+		}
+	}
+	return true
+}
+
+// isSame2DSlice returns true if two 2D slices' cell
+// are identical
+func isSame2DSlice[T comparable](a, b [][]T) bool {
+	if !isSameShape(a, b) {
+		return false
+	}
+	n := len(a)
 
 	for i := range n {
-		for j := range m {
+		for j := range len(a[i]) {
 			if a[i][j] != b[i][j] {
 				return false
 			}

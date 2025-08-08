@@ -27,14 +27,14 @@ func groupAnagrams(strs []string) [][]string {
 func TestGroupAnagrams(t *testing.T) {
 	expected := [][]string{[]string{"bat"}, []string{"nat", "tan"}, []string{"ate", "eat", "tea"}}
 	ans := groupAnagrams([]string{"eat", "tea", "tan", "ate", "nat", "bat"})
-	if !compare2Dslices(ans, expected) {
+	if !isSame2DSlice(ans, expected) {
 		t.Errorf("TEST 1 FAILED")
 
 	}
 
 	expected = [][]string{[]string{""}}
 	ans = groupAnagrams([]string{""})
-	if !compare2Dslices(ans, expected) {
+	if !isSame2DSlice(ans, expected) {
 		t.Errorf("TEST 2 FAILED")
 	}
 

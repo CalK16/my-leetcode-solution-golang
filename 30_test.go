@@ -40,22 +40,22 @@ func findSubstring(s string, words []string) []int {
 
 func TestFindSubstring(t *testing.T) {
 	ans := findSubstring("barfoothefoobarman", []string{"foo", "bar"})
-	if !compareSlices(ans, []int{0, 9}) {
+	if !isSameSlices(ans, []int{0, 9}) {
 		t.Errorf("TEST 1 FAILED: %#v != %#v", ans, []int{0, 9})
 	}
 
 	ans = findSubstring("wordgoodgoodgoodbestword", []string{"word", "good", "best", "word"})
-	if !compareSlices(ans, []int{}) {
+	if !isSameSlices(ans, []int{}) {
 		t.Errorf("TEST 2 FAILED")
 	}
 
 	ans = findSubstring("barfoofoobarthefoobarman", []string{"bar", "foo", "the"})
-	if !compareSlices(ans, []int{6, 9, 12}) {
+	if !isSameSlices(ans, []int{6, 9, 12}) {
 		t.Errorf("TEST 3 FAILED")
 	}
 
 	ans = findSubstring("wordgoodgoodgoodbestword", []string{"word", "good", "best", "good"})
-	if !compareSlices(ans, []int{8}) {
+	if !isSameSlices(ans, []int{8}) {
 		t.Errorf("TEST 4 FAILED")
 	}
 }
